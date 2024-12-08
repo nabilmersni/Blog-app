@@ -41,6 +41,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       return UserModel.fromJson(res.user!.toJson()).copyWith(
         email: email,
       );
+    } on AuthException catch (e) {
+      throw ServerExceptions(message: e.message);
     } catch (e) {
       throw ServerExceptions(message: e.toString());
     }
@@ -64,6 +66,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       return UserModel.fromJson(res.user!.toJson()).copyWith(
         email: email,
       );
+    } on AuthException catch (e) {
+      throw ServerExceptions(message: e.message);
     } catch (e) {
       throw ServerExceptions(message: e.toString());
     }
